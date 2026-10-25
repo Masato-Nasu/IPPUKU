@@ -1,0 +1,25 @@
+*{box-sizing:border-box}html,body{margin:0;background:#000;color:#c9c5be;height:100%;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}body{display:flex;flex-direction:column;user-select:none}header{height:85px;padding:28px 5vw;display:flex;gap:20px;align-items:center;z-index:2}header>span{font-family:serif;font-size:23px;letter-spacing:.28em}small{font-size:9px;letter-spacing:.23em;color:#706c67}button{font:inherit;color:inherit;cursor:pointer}#reset{margin-left:auto;border:1px solid #292622;background:transparent;border-radius:30px;font-size:10px;padding:9px 16px}main{flex:1;min-height:0;display:flex;justify-content:center;align-items:center}#scene{position:relative;width:min(80vh,100vw,850px);aspect-ratio:1;max-height:100%;touch-action:none}#scene img{width:100%;height:100%;object-fit:contain;display:block}canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}footer{height:165px;flex-shrink:0;text-align:center;padding:8px 20px 22px;z-index:3}p{font-size:12px;letter-spacing:.13em;color:#a29d97;margin:0 0 18px}#draw{display:block;margin:0 auto 17px;width:230px;height:47px;border:1px solid #322c26;background:#0c0a08;border-radius:30px;position:relative;touch-action:none}.line{position:absolute;left:35px;right:28px;top:22px;height:1px;background:linear-gradient(90deg,#947354,#28221b)}.knob{position:absolute;left:11px;top:10px;width:25px;height:25px;border-radius:50%;background:#968777;box-shadow:0 0 15px #b88a4320;transition:background .2s}.label{position:absolute;right:20px;top:14px;font-size:11px;color:#9b8d7e;background:#0c0a08;padding-left:8px}button:focus-visible{outline:1px solid #c6b49e;outline-offset:5px}@media(max-height:650px){header{height:55px;padding:15px 5vw}footer{height:130px}#scene{width:min(75vh,100vw)}}
+
+.pleasure{display:flex;align-items:center;justify-content:center;gap:12px;font-size:10px;color:#9b8d7e;letter-spacing:.1em}.track{width:100px;height:2px;background:#27221c}.track i{display:block;width:0;height:100%;background:#c9a779;box-shadow:0 0 8px #bb864a80;transition:width .2s}.note{font-size:8px;color:#61594f}#level{min-width:20px;font-variant-numeric:tabular-nums}
+#scene{width:min(calc(100dvh - 250px),100vw,850px);height:auto;max-height:none;flex-shrink:0}@media(max-height:650px){#scene{width:min(calc(100dvh - 185px),100vw)}}
+
+#scene #inhale-pose{position:absolute;inset:0;opacity:0;transition:opacity .28s ease-in-out;pointer-events:none}#scene.inhaling #inhale-pose{opacity:1}
+
+/* A measured lift and a slower settling gesture; no abrupt on/off pose. */
+#scene{transform-origin:40% 78%;will-change:transform}
+#scene #inhale-pose{transition:opacity .95s cubic-bezier(.22,.61,.36,1)}
+#scene.inhaling #inhale-pose{transition-duration:.75s}
+.knob{transition:transform .55s cubic-bezier(.22,.61,.36,1),background .4s}
+#draw:active .knob{transition:transform .18s ease-out,background .4s}
+@media(prefers-reduced-motion:reduce){#scene{transform:none!important}}
+
+#scene #inhale-pose{transition:opacity .18s ease}#scene.inhaling #inhale-pose{transition-duration:.18s}
+#ending{position:absolute;right:8%;top:43%;opacity:0;transform:translateY(8px);transition:opacity 3s ease,transform 3s ease;text-align:center;pointer-events:none}#ending>span{display:block;font-family:serif;font-size:30px;letter-spacing:.4em;color:#d0baa0}#ending small{display:block;margin-top:17px;letter-spacing:.18em;font-size:10px}
+.completed #ending{opacity:1;transform:translateY(0)}.completed #draw{opacity:.35;cursor:default}.completed #hint{color:#d6b690}.completed .track i{box-shadow:0 0 12px #d4a065;transition:box-shadow 2s}
+/* Deliberate pose timing; preserve hand anatomy without mesh deformation. */
+#scene #inhale-pose{transition:opacity 1s cubic-bezier(.4,0,.2,1)}
+#scene.inhaling #inhale-pose{transition-duration:.8s}
+
+.pose{position:relative;width:100%;height:100%}.ember{position:absolute;width:5px;height:5px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;background:#813115;transition:opacity 2.8s ease}#rest-pose .ember{left:51.8%;top:42.2%}#inhale-pose .ember{left:51.5%;top:37.5%}.completed .ember{opacity:0}
+
+.burn-mask{position:absolute;inset:0;background:#000;pointer-events:none;clip-path:polygon(0 0,0 0,0 0)}
