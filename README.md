@@ -2,6 +2,8 @@
 
 指を引いて、離す。煙の行方を眺める、小さな間。
 
+[アプリを開く](https://masato-nasu.github.io/IPPUKU/) · [MASATO LAB](https://masato-lab.pages.dev/tools-other)
+
 黒背景の横顔と、流体シミュレーションで拡散する煙を眺めるブラウザアプリです。
 
 ## 操作
